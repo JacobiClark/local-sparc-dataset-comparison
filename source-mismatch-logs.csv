@@ -1,18 +1,1 @@
 Mismatch description,Folder/file path
-Folder in local dataset but not on Pennsieve,primary/primary
-Folder in local dataset but not on Pennsieve,primary/source
-Folder in local dataset but not on Pennsieve,source/primary
-Folder in local dataset but not on Pennsieve,source/source
-Folder on Pennsieve but not in local dataset,primary/2
-Folder on Pennsieve but not in local dataset,primary/test
-Folder on Pennsieve but not in local dataset,source/2
-Folder on Pennsieve but not in local dataset,source/testing2
-Folder on Pennsieve but not in local dataset,source/thisisnotempty
-File on Pennsieve but not in local dataset,primary/a.odt
-File on Pennsieve but not in local dataset,primary/b.txt
-File on Pennsieve but not in local dataset,source/a - Copy (2).odt
-File on Pennsieve but not in local dataset,source/a - Copy (3).odt
-File on Pennsieve but not in local dataset,source/a - Copy (4).odt
-File on Pennsieve but not in local dataset,source/a - Copy.odt
-File on Pennsieve but not in local dataset,source/a.odt
-File on Pennsieve but not in local dataset,source/b.txt

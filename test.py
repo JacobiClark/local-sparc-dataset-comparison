@@ -135,17 +135,21 @@ def get_package_children(package_id):
 
 sds_compliant_folder_packages_obj = get_sds_compliant_folders_package_ids(dataset_id)
 
+print(f"SDS compliant folders: {sds_compliant_folder_packages_obj}")
+
 
 def verify_local_folders_and_files_exist_on_pennsieve(
     local_path, pennsieve_package_id, recursivePath
-):
+):  
+    print(f"Verifying local folders and files in {local_path} exist on Pennsieve...")
+    print(f"Recursive path: {recursivePath}")
     # Step 1: Get the children of the Pennsieve package
     package_children = get_package_children(pennsieve_package_id)
     folders_on_pennsieve, files_on_pennsieve = get_packages_folders_and_files(
         package_children
     )
 
-    # Create a list of the names of the folders and files on Pennsieve
+    # Step 1: Create a list of the names of the folders and files on Pennsieve
     folder_names_on_pennsieve = []
     file_names_on_pennsieve = []
     for folder in folders_on_pennsieve:
@@ -171,7 +175,10 @@ def verify_local_folders_and_files_exist_on_pennsieve(
                 local_zero_kb_files.append(child)
             else:
                 local_files.append(child)
-
+    print(f"Current recursive path: {recursivePath}")
+    print(f"Local folders: {local_folders}")
+    print(f"Local files: {local_files}")
+    print(f"Folders on Pennsieve: {folder_names_on_pennsieve}")
     folders_local_and_pennsieve = []
     # Step 3: Add local folders that are not on Pennsieve to a list
     for folder in local_folders:
@@ -199,7 +206,7 @@ def verify_local_folders_and_files_exist_on_pennsieve(
     for file in local_zero_kb_files:
         if file not in file_names_on_pennsieve:
             zero_kb_files_in_local_dataset_but_not_on_pennsieve.append(
-                f"{recursive_path}{file}"
+                f"{recursivePath}{file}"
             )
 
     # Step 5: Add Pennsieve folders that are not on the local dataset to a list
@@ -236,7 +243,7 @@ print("This may take a whie for large datasets...")
 
 # Iterate over all top-level folders in the Pennsieve dataset
 for folder_name, folder_id in sds_compliant_folder_packages_obj.items():
-    verify_local_folders_and_files_exist_on_pennsieve(user_path, folder_id, f"{folder_name}/")
+    verify_local_folders_and_files_exist_on_pennsieve(os.path.join(user_path, folder_name), folder_id, f"{folder_name}/")
 
 # Check if there are folders in the local dataset that do not exist on Pennsieve
 if len(folders_in_local_dataset_but_not_on_pennsieve) != 0:
