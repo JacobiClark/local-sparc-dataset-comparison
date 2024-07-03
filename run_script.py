@@ -135,14 +135,10 @@ def get_package_children(package_id):
 
 sds_compliant_folder_packages_obj = get_sds_compliant_folders_package_ids(dataset_id)
 
-print(f"SDS compliant folders: {sds_compliant_folder_packages_obj}")
-
 
 def verify_local_folders_and_files_exist_on_pennsieve(
     local_path, pennsieve_package_id, recursivePath
 ):  
-    print(f"Verifying local folders and files in {local_path} exist on Pennsieve...")
-    print(f"Recursive path: {recursivePath}")
     # Step 1: Get the children of the Pennsieve package
     package_children = get_package_children(pennsieve_package_id)
     folders_on_pennsieve, files_on_pennsieve = get_packages_folders_and_files(
@@ -175,10 +171,6 @@ def verify_local_folders_and_files_exist_on_pennsieve(
                 local_zero_kb_files.append(child)
             else:
                 local_files.append(child)
-    print(f"Current recursive path: {recursivePath}")
-    print(f"Local folders: {local_folders}")
-    print(f"Local files: {local_files}")
-    print(f"Folders on Pennsieve: {folder_names_on_pennsieve}")
     folders_local_and_pennsieve = []
     # Step 3: Add local folders that are not on Pennsieve to a list
     for folder in local_folders:
